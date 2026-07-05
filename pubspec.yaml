@@ -1,0 +1,96 @@
+name: livesure_op
+description: Complete ERP + Delivery Management System for 19L Water Plants
+version: 1.0.0+1
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State Management
+  provider: ^6.0.5
+  equatable: ^2.0.5
+  
+  # Backend & Services
+  supabase_flutter: ^1.10.0
+  firebase_core: ^2.24.0
+  firebase_messaging: ^14.6.0
+  
+  # UI
+  google_maps_flutter: ^2.5.0
+  fl_chart: ^0.63.0
+  google_fonts: ^6.1.0
+  flutter_svg: ^2.0.9
+  cached_network_image: ^3.3.0
+  shimmer: ^3.0.0
+  
+  # Forms
+  flutter_form_builder: ^9.1.0
+  form_builder_validators: ^9.0.0
+  
+  # Networking
+  dio: ^5.3.2
+  connectivity_plus: ^4.0.1
+  
+  # Location
+  geolocator: ^9.0.2
+  geocoding: ^2.1.0
+  
+  # QR Code
+  qr_code_scanner: ^1.0.1
+  qr_flutter: ^4.1.0
+  
+  # Utilities
+  intl: ^0.18.1
+  url_launcher: ^6.1.11
+  share_plus: ^7.1.0
+  permission_handler: ^10.4.3
+  device_info_plus: ^9.0.3
+  package_info_plus: ^4.0.0
+  
+  # Notifications
+  flutter_local_notifications: ^15.1.0
+  timezone: ^0.9.2
+  
+  # PDF & Reports
+  pdf: ^3.10.4
+  printing: ^5.11.0
+  
+  # Storage
+  shared_preferences: ^2.2.1
+  hive_flutter: ^1.1.0
+  path_provider: ^2.0.15
+  
+  # Other
+  flutter_dotenv: ^5.1.0
+  image_picker: ^1.0.4
+  file_picker: ^5.3.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  build_runner: ^2.4.6
+  hive_generator: ^2.0.1
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - .env
+    - assets/images/
+    - assets/fonts/
+  
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
