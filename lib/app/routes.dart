@@ -40,7 +40,7 @@ class AppRoutes {
   static const String attendance = '/attendance';
   static const String qrScanner = '/qr-scanner';
   static const String profile = '/profile';
-  stastatic const String appSettings = '/settings';
+  static const String appSettings = '/settings';
   static const String notifications = '/notifications';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
