@@ -63,7 +63,7 @@ class LocationService {
 
   Future<String> getAddressFromLatLng(LatLng position) async {
     try {
-      final placemarks = await Geolocator.placemarkFromCoordinates(
+      final placemarks = await geocoding.placemarkFromCoordinates(
         position.latitude,
         position.longitude,
       );
