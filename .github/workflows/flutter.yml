@@ -38,6 +38,12 @@ jobs:
       - name: Regenerate missing Android platform files
         run: flutter create --platforms=android .
 
+      - name: Remove conflicting Kotlin-DSL duplicates
+        run: |
+          rm -f android/settings.gradle.kts
+          rm -f android/build.gradle.kts
+          rm -f android/app/build.gradle.kts
+
       - name: Install dependencies
         run: flutter pub get
 
