@@ -33,7 +33,7 @@ class DashboardProvider extends ChangeNotifier {
       final riderStats = await _riderRepository.getRiderStats();
       
       _stats = {
-        'totalOrders': orderStats.values.fold(0, (sum, count) => sum + count),
+        'totalOrders': orderStats.values.fold<int>(0, (sum, count) => sum + (count as int)),
         'pendingDeliveries': orderStats['pending'] ?? 0,
         'activeCustomers': customerStats['active'] ?? 0,
         'todayRevenue': 27500.0, // Placeholder
