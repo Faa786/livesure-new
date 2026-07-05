@@ -69,7 +69,7 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const InventoryManagementScreen());
       case profile:
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
-      case settings:
+      case appSettings:
         return MaterialPageRoute(builder: (_) => const SettingsScreen());
       case notifications:
         return MaterialPageRoute(builder: (_) => const NotificationsScreen());
