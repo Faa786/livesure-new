@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:livesure_op/core/services/supabase_service.dart';
 import 'package:livesure_op/app/app.dart';
 import 'package:livesure_op/core/services/notification_service.dart';
 import 'package:livesure_op/core/services/location_service.dart';
