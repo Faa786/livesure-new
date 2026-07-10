@@ -1,4 +1,5 @@
 import 'package:geolocator/geolocator.dart';
+import 'package:geocoding/geocoding.dart' as geocoding;
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class LocationService {
@@ -62,7 +63,7 @@ class LocationService {
 
   Future<String> getAddressFromLatLng(LatLng position) async {
     try {
-      final placemarks = await Geolocator.placemarkFromCoordinates(
+      final placemarks = await geocoding.placemarkFromCoordinates(
         position.latitude,
         position.longitude,
       );

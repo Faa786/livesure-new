@@ -43,7 +43,7 @@ class SupabaseService {
     List<String>? orderBy,
     int? limit,
   }) async {
-    var query = _client.from(table).select();
+    dynamic query = _client.from(table).select();
     
     if (filters != null) {
       filters.forEach((key, value) {

@@ -49,7 +49,7 @@ class LiveSureApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
           useMaterial3: true,
-          fontFamily: 'Poppins',
+    
           appBarTheme: const AppBarTheme(
             elevation: 0,
             centerTitle: true,

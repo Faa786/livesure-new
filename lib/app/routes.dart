@@ -40,7 +40,7 @@ class AppRoutes {
   static const String attendance = '/attendance';
   static const String qrScanner = '/qr-scanner';
   static const String profile = '/profile';
-  static const String settings = '/settings';
+  static const String appSettings = '/settings';
   static const String notifications = '/notifications';
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
@@ -69,7 +69,7 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const InventoryManagementScreen());
       case profile:
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
-      case settings:
+      case appSettings:
         return MaterialPageRoute(builder: (_) => const SettingsScreen());
       case notifications:
         return MaterialPageRoute(builder: (_) => const NotificationsScreen());
