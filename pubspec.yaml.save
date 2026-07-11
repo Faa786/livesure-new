@@ -1,0 +1,21 @@
+kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkCtrl + description: Complete ERP + Delivery Management System for 19L Water Plants
+version: 1.0.0+1
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management
+  provider: ^6.1.2
+  equatable: ^2.0.5
+
+  # Backend & Services
+  supabase_flutter: ^2.5.6
+
+  # UI
+  google_maps_flutter: ^2.9.0
+  fl_chart: ^0.68.0

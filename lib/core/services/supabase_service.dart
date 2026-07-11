@@ -19,6 +19,13 @@ class SupabaseService {
   SupabaseClient get client => _client;
   
   Future<AuthResponse> signIn(String email, String password) async {
+ 
+  Future<AuthResponse> signUp(String email, String password) async {
+    return await _client.auth.signUp(
+      email: email,
+      password: password,
+    );
+  }
     return await _client.auth.signInWithPassword(
       email: email,
       password: password,

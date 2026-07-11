@@ -18,6 +18,24 @@ class AuthProvider extends ChangeNotifier {
   bool get isRider => _currentUser?.role == 'rider';
   bool get isCustomer => _currentUser?.role == 'customer';
 
+  Future<bool> register({required String email, required String password, required String name, required String phone}) async {
+    _isLoading = true;
+    _error = null;
+    notifyListeners();
+
+    try {
+      _currentUser = await _repository.signUp(email, password, name, phone);
+      _isLoading = false;
+      notifyListeners();
+      return true;
+    } catch (e) {
+      _error = e.toString();
+      _isLoading = false;
+      notifyListeners();
+      return false;
+    }
+  }
+
   Future<bool> login(String email, String password) async {
     _isLoading = true;
     _error = null;

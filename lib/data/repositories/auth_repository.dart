@@ -5,6 +5,29 @@ import '../../core/services/supabase_service.dart';
 class AuthRepository {
   final SupabaseService _supabase = SupabaseService();
 
+  Future<UserModel> signUp(String email, String password, String name, String phone) async {
+    try {
+      final response = await _supabase.signUp(email, password);
+      final userData = await _supabase.client
+          .from('users')
+          .insert({
+            'id': response.user!.id,
+            'email': email,
+            'full_name': name,
+            'phone': phone,
+            'role': 'rider',
+          }).select().single();
+
+      return UserModel.fromJson({
+        ...userData,
+        'access_token': response.session?.accessToken,
+        'refresh_token': response.session?.refreshToken,
+      });
+    } catch (e) {
+      throw Exception('Registration failed: $e');
+    }
+  }
+
   Future<UserModel> signIn(String email, String password) async {
     try {
       final response = await _supabase.signIn(email, password);
