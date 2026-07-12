@@ -1,14 +1,21 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../models/user_model.dart';
-import '../../core/services/supabase_service.dart';
 
 class AuthRepository {
-  final SupabaseService _supabase = SupabaseService();
+  final SupabaseClient _client = Supabase.instance.client;
 
   Future<UserModel> signUp(String email, String password, String name, String phone) async {
     try {
-      final response = await _supabase.signUp(email, password);
-      final userData = await _supabase.client
+      final response = await _client.auth.signUp(
+        email: email,
+        password: password,
+      );
+      
+      if (response.user == null) {
+        throw Exception('Signup failed');
+      }
+
+      final userData = await _client
           .from('users')
           .insert({
             'id': response.user!.id,
@@ -30,13 +37,16 @@ class AuthRepository {
 
   Future<UserModel> signIn(String email, String password) async {
     try {
-      final response = await _supabase.signIn(email, password);
-      final userData = await _supabase.client
+      final response = await _client.auth.signInWithPassword(
+        email: email,
+        password: password,
+      );
+      final userData = await _client
           .from('users')
           .select()
           .eq('id', response.user!.id)
           .single();
-      
+
       return UserModel.fromJson({
         ...userData,
         'access_token': response.session?.accessToken,
@@ -48,28 +58,28 @@ class AuthRepository {
   }
 
   Future<void> signOut() async {
-    await _supabase.signOut();
+    await _client.auth.signOut();
   }
 
   Future<UserModel?> getCurrentUser() async {
-    final user = await _supabase.getCurrentUser();
+    final user = _client.auth.currentUser;
     if (user == null) return null;
-    
-    final userData = await _supabase.client
+
+    final userData = await _client
         .from('users')
         .select()
         .eq('id', user.id)
         .single();
-    
+
     return UserModel.fromJson(userData);
   }
 
   Future<void> resetPassword(String email) async {
-    await _supabase.resetPassword(email);
+    await _client.auth.resetPasswordForEmail(email);
   }
 
   Future<void> updatePassword(String newPassword) async {
-    await _supabase.client.auth.updateUser(
+    await _client.auth.updateUser(
       UserAttributes(password: newPassword),
     );
   }
